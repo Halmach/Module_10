@@ -6,11 +6,24 @@ namespace Module_10
     {
         static void Main(string[] args)
         {
-            Writer wr = new Writer();
-            ((IWriter)wr).Write();
-            IWriter wr2 = new Writer();
-            wr2.Write();
-            Console.ReadKey();
+            Worker wr = new Worker();
+            wr.Build();
+            IWorker wr2 = new Worker();
+            wr2.Build();
+            
+        }
+    }
+
+    public interface IWorker
+    {
+        public void Build();
+    }
+
+    public class Worker : IWorker
+    {
+        public void Build()
+        {
+            Console.WriteLine("Build project");
         }
     }
 
