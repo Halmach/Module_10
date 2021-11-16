@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Module_10
 {
@@ -6,14 +7,47 @@ namespace Module_10
     {
         static void Main(string[] args)
         {
-            IWriter wr = new FileManager();
-            IReader rd = new FileManager();
-            IMailer mailer = new FileManager();
-            wr.Write();
-            rd.Read();
-            mailer.SendEmail();
 
+            Entity en = new Entity();
+            IUpdatable en2 = new Entity();
+            en.Create();
+            en.Delete();
+            en2.Update();
         }
+    }
+
+
+    public interface ICreatable
+    {
+        void Create();
+    }
+
+    public interface IDeletable
+    {
+        void Delete();
+    }
+
+    public interface IUpdatable
+    {
+        void Update()
+        {
+            Console.WriteLine("Обновление сущности через интерфейс IUpdatable");
+        }
+    }
+
+    public class Entity: ICreatable,IDeletable,IUpdatable
+    {
+        public void Create()
+        {
+            Console.WriteLine("Создали сущность");
+        }
+
+        public void Delete()
+        {
+            Console.WriteLine("Удалили сущность");
+        }
+
+
     }
 
     public class FileManager:IWriter,IReader,IMailer
