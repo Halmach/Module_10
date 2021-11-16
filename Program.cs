@@ -6,12 +6,38 @@ namespace Module_10
     {
         static void Main(string[] args)
         {
-            Worker wr = new Worker();
-            ((IWorker)wr).Build();
-            IWorker wr2 = new Worker();
-            wr2.Build();
-            
+            IWriter wr = new FileManager();
+            IReader rd = new FileManager();
+            IMailer mailer = new FileManager();
+            wr.Write();
+            rd.Read();
+            mailer.SendEmail();
+
         }
+    }
+
+    public class FileManager:IWriter,IReader,IMailer
+    {
+        public void Read()
+        {
+            Console.WriteLine("Чтение из файла");
+        }
+
+        public void SendEmail()
+        {
+            Console.WriteLine("Отправка сообщения");
+        }
+    }
+
+
+    public interface IReader
+    {
+        void Read();
+    }
+
+    public interface IMailer
+    {
+        void SendEmail();
     }
 
     public interface IWorker
@@ -31,7 +57,7 @@ namespace Module_10
     {
         void Write()
         {
-            Console.WriteLine("IWRITER");
+            Console.WriteLine("Реализация интерфейса IWriter");
         }
     }
 
