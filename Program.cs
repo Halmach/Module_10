@@ -8,13 +8,39 @@ namespace Module_10
         static void Main(string[] args)
         {
 
-            Entity en = new Entity();
-            IUpdatable en2 = new Entity();
-            en.Create();
-            en.Delete();
-            en2.Update();
+
         }
     }
+
+    public interface IBook
+    {
+        void Read();
+    }
+
+    public interface IDevice
+    {
+        void TurnOn();
+        void TurnOff();
+    }
+
+    public class ElectronicBook : IBook,IDevice
+    {
+        void IBook.Read()
+        {
+            throw new NotImplementedException();
+        }
+
+        void IDevice.TurnOn()
+        {
+            throw new NotImplementedException();
+        }
+
+        void IDevice.TurnOff()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
 
 
     public interface ICreatable
