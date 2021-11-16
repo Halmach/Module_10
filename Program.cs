@@ -13,7 +13,7 @@ namespace Module_10
     public class Manager : IManager
     {
         public void Create()
-        {
+        { 
 
         }
 
