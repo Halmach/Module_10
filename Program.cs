@@ -7,7 +7,7 @@ namespace Module_10
         static void Main(string[] args)
         {
             Worker wr = new Worker();
-            wr.Build();
+            ((IWorker)wr).Build();
             IWorker wr2 = new Worker();
             wr2.Build();
             
@@ -16,12 +16,12 @@ namespace Module_10
 
     public interface IWorker
     {
-        public void Build();
+         void Build();
     }
 
     public class Worker : IWorker
     {
-        public void Build()
+        void IWorker.Build()
         {
             Console.WriteLine("Build project");
         }
