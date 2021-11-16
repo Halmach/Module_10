@@ -6,7 +6,27 @@ namespace Module_10
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Writer wr = new Writer();
+            ((IWriter)wr).Write();
+            IWriter wr2 = new Writer();
+            wr2.Write();
+            Console.ReadKey();
+        }
+    }
+
+    public interface IWriter
+    {
+        void Write()
+        {
+            Console.WriteLine("IWRITER");
+        }
+    }
+
+    public class Writer : IWriter
+    {
+        void IWriter.Write()
+        {
+            Console.WriteLine("Writer");
         }
     }
 
