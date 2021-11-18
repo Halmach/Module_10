@@ -7,9 +7,33 @@ namespace Module_10
     {
         static void Main(string[] args)
         {
-
+            //IUpdater<Account> ac = new UserService<User>();
+            UserService us = new UserService();
+            IUpdater<Account> acUpdater = new UserService();
+            IUpdater<User> usUpdater = new UserService();
 
         }
+    }
+    public interface IUpdater<out T>
+    {
+        T GetzAccount { get; }
+        //  void Update(T entity);
+    }
+    /* Ковариантность дает возможность приводить конкретные типы данных
+     к общим в обощенных интерфейсах*/
+    public class UserService : IUpdater<Account>
+    {
+        public Account GetzAccount { get; }
+    }
+
+    public class User
+    {
+
+    }
+
+    public class Account : User
+    {
+
     }
 
     public interface IBook
